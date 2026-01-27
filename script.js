@@ -1,10 +1,15 @@
-const btn = document.getElementById("startBtn");
 const music = document.getElementById("bg-music");
+const btn = document.getElementById("startBtn");
 
 if (music) {
   const savedTime = localStorage.getItem("musicTime");
+
   if (savedTime) {
+    // agar pehle se time saved hai, wahi se chalao
     music.currentTime = savedTime;
+  } else {
+    // first time load ho raha hai to 55 sec se start
+    music.currentTime = 55;
   }
 
   music.volume = 0.7;
