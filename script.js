@@ -23,3 +23,15 @@ function flipCard(card) {
 function goFinal() {
   window.location.href = "page3.html";
 }
+const balloonContainer = document.querySelector(".balloons");
+
+if (balloonContainer) {
+  for (let i = 0; i < 20; i++) {
+    const balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+    balloon.style.left = Math.random() * 100 + "vw";
+    balloon.style.animationDuration = 8 + Math.random() * 5 + "s";
+    balloon.style.animationDelay = Math.random() * 5 + "s";
+    balloonContainer.appendChild(balloon);
+  }
+}
