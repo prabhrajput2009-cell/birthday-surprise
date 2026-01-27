@@ -1,27 +1,27 @@
 const btn = document.getElementById("startBtn");
 const music = document.getElementById("bg-music");
 
-btn.addEventListener("click", () => {
- music.currentTime = 55; // yahan seconds change kar sakte ho
-  music.volume = 0.7;
-  music.play();
-  music.volume = 0;
-music.play();
-
-let vol = 0;
-const fade = setInterval(() => {
-  if (vol < 0.7) {
-    vol += 0.05;
-    music.volume = vol;
-  } else {
-    clearInterval(fade);
+if (music) {
+  const savedTime = localStorage.getItem("musicTime");
+  if (savedTime) {
+    music.currentTime = savedTime;
   }
-}, 200);
 
-  setTimeout(() => {
-    window.location.href = "page2.html";
-  }, 800);
-});
+  music.volume = 0.7;
+
+  setInterval(() => {
+    localStorage.setItem("musicTime", music.currentTime);
+  }, 500);
+}
+
+if (btn) {
+  btn.addEventListener("click", () => {
+    music.play();
+    setTimeout(() => {
+      window.location.href = "page2.html";
+    }, 800);
+  });
+}
 let flippedCount = 0;
 
 function flipCard(card) {
