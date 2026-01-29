@@ -50,5 +50,23 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+const music = document.getElementById("bgMusic");
+
+const savedTime = localStorage.getItem("musicTime");
+
+if (savedTime) {
+  music.currentTime = savedTime;
+} else {
+  music.currentTime = 55;
+}
+
+music.play();
+
+setInterval(() => {
+  localStorage.setItem("musicTime", music.currentTime);
+}, 1000);
+</script>
+
 </body>
 </html>
