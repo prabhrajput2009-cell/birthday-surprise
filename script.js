@@ -2,7 +2,9 @@ const music = document.getElementById("bg-music");
 const btn = document.getElementById("startBtn");
 
 if (music) {
-  const savedTime = localStorage.getItem("musicTime");
+  music.currentTime = 55;
+  music.play();
+}
 
   if (savedTime) {
     // agar pehle se time saved hai, wahi se chalao
