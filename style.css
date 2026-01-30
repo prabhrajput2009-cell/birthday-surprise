@@ -212,3 +212,48 @@ body {
   from { background-position: 0 0; }
   to { background-position: 200px 200px; }
 }
+.balloons {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.heart-balloon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: red;
+  transform: rotate(-45deg);
+  animation: rise 10s linear infinite;
+}
+
+.heart-balloon::before,
+.heart-balloon::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart-balloon::before {
+  top: -20px;
+  left: 0;
+}
+
+.heart-balloon::after {
+  left: 20px;
+  top: 0;
+}
+
+@keyframes rise {
+  from {
+    bottom: -10%;
+    opacity: 0;
+  }
+  to {
+    bottom: 110%;
+    opacity: 1;
+  }
+}
