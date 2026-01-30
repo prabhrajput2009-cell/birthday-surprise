@@ -49,6 +49,7 @@
     <button id="finalBtn" onclick="goFinal()">Click for surprise attack 😌</button>
   </div>
 <script src="script.js"></script>
+  <script>
 const music = document.getElementById("bgMusic");
 
 const savedTime = localStorage.getItem("musicTime");
@@ -64,7 +65,7 @@ music.play();
 setInterval(() => {
   localStorage.setItem("musicTime", music.currentTime);
 }, 1000);
-</script>
+  </script>
 
 </body>
 </html>
