@@ -199,3 +199,16 @@ body {
   from { transform: translateY(100vh); }
   to { transform: translateY(-10vh); }
 }
+.confetti {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(#fff 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: moveBg 20s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes moveBg {
+  from { background-position: 0 0; }
+  to { background-position: 200px 200px; }
+}
