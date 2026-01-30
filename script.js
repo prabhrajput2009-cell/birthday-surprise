@@ -1,26 +1,28 @@
+// ===== MUSIC SETUP =====
 const music = document.getElementById("bg-music");
 const btn = document.getElementById("startBtn");
 
-if (music) {
-  music.currentTime = 55;
-  music.play();
-}
+let savedTime = localStorage.getItem("musicTime");
 
+if (music) {
   if (savedTime) {
-    // agar pehle se time saved hai, wahi se chalao
-    music.currentTime = savedTime;
+    music.currentTime = parseFloat(savedTime);
   } else {
-    // first time load ho raha hai to 55 sec se start
     music.currentTime = 55;
   }
 
   music.volume = 0.7;
 
+  music.play().catch(() => {
+    // autoplay block ho sakta hai, ignore
+  });
+
   setInterval(() => {
     localStorage.setItem("musicTime", music.currentTime);
   }, 500);
+}
 
-if (btn) {
+if (btn && music) {
   btn.addEventListener("click", () => {
     music.play();
     setTimeout(() => {
@@ -28,6 +30,8 @@ if (btn) {
     }, 800);
   });
 }
+
+// ===== CARD FLIP LOGIC =====
 let flippedCount = 0;
 
 function flipCard(card) {
@@ -36,7 +40,10 @@ function flipCard(card) {
     flippedCount++;
 
     if (flippedCount === 3) {
-      document.getElementById("finalBtn").style.display = "inline-block";
+      const finalBtn = document.getElementById("finalBtn");
+      if (finalBtn) {
+        finalBtn.style.display = "inline-block";
+      }
     }
   }
 }
@@ -44,6 +51,8 @@ function flipCard(card) {
 function goFinal() {
   window.location.href = "page3.html";
 }
+
+// ===== BALLOONS =====
 const balloonContainer = document.querySelector(".balloons");
 
 if (balloonContainer) {
@@ -56,3 +65,4 @@ if (balloonContainer) {
     balloonContainer.appendChild(balloon);
   }
 }
+
