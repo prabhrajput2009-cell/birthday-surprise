@@ -19,7 +19,6 @@ if (music) {
   setInterval(() => {
     localStorage.setItem("musicTime", music.currentTime);
   }, 500);
-}
 
 if (btn) {
   btn.addEventListener("click", () => {
